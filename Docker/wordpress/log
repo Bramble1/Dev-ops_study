@@ -1,0 +1,17 @@
+    1  history
+    2  v wordpress.yaml
+    3  ls
+    4  docker-compose up -d
+    5  mv wordpress.yaml docker-compose.yaml
+    6  ls
+    7  docker-compose up -d
+    8  sudo docker-compose up -d
+    9  sudo docker ps
+   10  history
+   11  history > log
+   12  history
+   13  ls
+   14  sudo history > log
+   15  ls
+   16  cd ../
+   17  history > log
