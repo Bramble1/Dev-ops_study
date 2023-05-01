@@ -1,0 +1,1 @@
+to setup and use kubernetes on my my machine, install and start minikube program, with minikube start, which we then interact to the API master server to create our clusters etc using kubectl. Which also needs to be installed.
