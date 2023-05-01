@@ -1,0 +1,1 @@
+Basic build of ubuntu image, which then echos a simple message when the image is run as a container. This also contains my bash history.
