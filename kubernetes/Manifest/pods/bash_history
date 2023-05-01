@@ -1,0 +1,23 @@
+    1  kubectl cluster-info
+    2  kubectl get pods
+    3  v basic_pod.yaml
+    4  kubectl create -f basic_pod.yaml
+    5  kubectl get pods
+    6  kubectl describe pod | more
+    7  clear
+    8  history
+    9  v port_pod.yaml
+   10  kubectl delete pod mypod
+   11  kubectl create -f port_pod.yaml
+   12  kubectl describe pod mypod | more
+   13  v labeled_pod.yaml
+   14  v resources_pod.yaml
+   15  kubectl delete pod mypod
+   16  kubectl create -f resources_pod.yaml
+   17  v resources_pod.yaml
+   18  kubectl create -f resources_pod.yaml
+   19  v resources_pod.yaml
+   20  echo "" > resources_pod.yaml
+   21  v resources_pod.yaml 
+   22  kubectl create -f resources_pod.yaml
+   23  history > bash_history
