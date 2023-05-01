@@ -1,0 +1,18 @@
+    1  history
+    2  clear
+    3  ls
+    4  v Dockerfile
+    5  ls
+    6  docker build -t ubunt:1.0 .
+    7  sudo docker build -t ubunt:1.0 .
+    8  sudo docker images
+    9  docker run 877afcb08af7
+   10  sudo docker run 877afcb08af7
+   11  sudo docker ps 
+   12  sudo docker ps -a
+   13  clear
+   14  cp ~/.bash_history log
+   15  ls
+   16  vim log 
+   17  history
+   18  history > log
