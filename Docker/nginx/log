@@ -1,0 +1,20 @@
+    1  v Dockerfile
+    2  vim index.html
+    3  ls
+    4  sudo dockerbuild -t nginx:3.0 .
+    5  sudo docker build -t nginx:3.0 .
+    6  sudo docker images
+    7  v Dockerfile
+    8  vim nginx2.conf
+    9  sudo docker build -t nginx:3.0 .
+   10  sudo docker images
+   11  sudo docker run -d -it -p 8080:80 b2f1a7aa3013
+   12  sudo docker ps
+   13  curl localhost
+   14  sudo curl localhost
+   15  sudo curl localhost:80
+   16  history
+   17  history > log
+   18  curl http://localhost:8080/
+   19  history
+   20  history > log
