@@ -26,3 +26,33 @@
    26  kubectl get pods
    27  ls
    28  history > bash_history 
+   29  cat bash_history 
+   30  clear
+   31  ls
+   32  cat frontend.yaml 
+   33  vimm frontend.yaml 
+   34  vim frontend.yaml 
+   35  kubectl apply -f frontend.yaml
+   36  vim frontend.yaml 
+   37  kubectl apply -f frontend.yaml
+   38  vim frontend.yaml 
+   39  kubectl apply -f frontend.yaml
+   40  vim frontend.yaml 
+   41  kubectl apply -f frontend.yaml
+   42  vim frontend.yaml 
+   43  kubectl apply -f frontend.yaml
+   44  ls
+   45  kubectl get pods
+   46  vim backend.yaml
+   47  kubectl apply -f backend.yaml
+   48  kubectl get pods
+   49  kubectl get svc
+   50  clear
+   51  kubectl get svc
+   52  kubectl get pods
+   53  kubectl describe pods
+   54  kubectl describe pods | less
+   55  kubectl get deployments
+   56  kubectl set image deployment/frontend frontend=reeceqa/python-frontend-purple
+   57  ls
+   58  history > bash_history

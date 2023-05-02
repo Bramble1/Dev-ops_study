@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+    type: ClusterIP # set the type of Service
+    selector:
+      app: backend # referencing the Pod's label
+    ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001
+---
+#deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: reeceqa/python-backend
+          ports:
+            - containerPort: 5001
+
+
+
+#pod manifest
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: backend
+#  labels:
+#    app: backend
+#spec:
+#    containers:
+#      - name: backend
+#        image: reeceqa/python-backend
+#        ports:
+#         - containerPort: 5001
+
+
+
+
+
+
