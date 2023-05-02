@@ -1,1 +1,1 @@
-This contains Manifest files for creating certain pods. AS well as containing my bash history to show my usage of using kubectl.
+This contains Manifest files for creating certain pods. AS well as containing my bash history to show my usage of using kubectl. A pod contains one or more containers,being running instances which are passed to the API server master node, which is the front end to the cluster and assigns it to a node in the cluster.
