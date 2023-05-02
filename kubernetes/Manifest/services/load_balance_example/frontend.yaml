@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer    #set the type of service
+  selector:
+    app: frontend       #referencing the pod's label
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+
+---
+#Pod config below here
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: frontend
+      image: reeceqa/python-frontend
+      ports:
+      - containerPort: 5000
+        

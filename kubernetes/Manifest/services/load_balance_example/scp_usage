@@ -1,0 +1,5 @@
+    1  ls
+    2  ls pems/
+    3  scp -r -i pems/access_v2.pem ubuntu@13.42.21.155:~/*.yaml ./
+    4  ls
+    5  history > scp_usage

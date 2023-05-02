@@ -1,0 +1,175 @@
+    1  sudo apt update
+    2  sudo apt upgrade
+    3  sudo apt install awkcli
+    4  sudo apt install awscli
+    5  aws configure
+    6  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-
+    7  09/bin/linux/amd64/kubectl
+    8  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+    9  chmod +x ./kubectl
+   10  ls
+   11  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+   12  echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+   13  kubectl version --short --client
+   14  aws eks update-kubeconfig --region eu-west-1 --name <name of cluster>
+   15  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   16  kubectl version --short --client
+   17  aws eks update-kubeconfig --region eu-west-1 --name <name of cluster>
+   18  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   19  aws configure
+   20  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   21  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+   22  kubectl version --short 
+   23  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   24  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-
+   25  09/bin/linux/amd64/kubectl
+   26  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+   27  ls
+   28  cd bin/
+   29  ls
+   30  cd ../
+   31  ls
+   32  rm -r *
+   33  ls
+   34  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+   35  chmod +x ./kubectl
+   36  ls
+   37  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+   38  echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+   39  kubectl version --short --client
+   40  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   41  aws eks update-kubeconfig --region eu-west-1 --name 
+   42  aws eks update-kubeconfig --region eu-west-1 --name myCluster
+   43  aws configure
+   44  ls
+   45  rm -r *
+   46  curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+   47  chmod +x ./kubectl
+   48  mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+   49  echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+   50  kubectl version --short --client
+   51  aws eks update-kubeconfig --region eu-west-2 --name myCluster
+   52  kubectl get svc
+   53  htop
+   54  kubectl
+   55  ls
+   56  mkdir kube_work
+   57  ls
+   58  cd kube_work/
+   59  vim nginx-pod.yaml
+   60  kubectl create -f nginx-pod.yaml
+   61  vim nginx-pod.yaml
+   62  kubectl create -f nginx-pod.yaml
+   63  vim nginx-pod.yaml 
+   64  kubectl create -f nginx-pod.yaml
+   65  vim nginx-pod.yaml 
+   66  kubectl create -f nginx-pod.yaml
+   67  kubectl exec -it nginx -sh
+   68  kubectl exec -it nginx -sh bash
+   69  kubectl exec -it nginx -sh
+   70  kubectl exec
+   71  kubectl exec -it nginx -sh
+   72  kubectl exec -it nginx -sh bash
+   73  kubectl exec -it
+   74  kubectl exec -it nginx -- bash
+   75  kubectl exec -it nginx -sh -- bash
+   76  kubectl exec --stdin --tty nginx -- /bin/bash
+   77  kubectl exec -it nginx -sh
+   78  kubectl exec -it nginx --sh
+   79  kubectl exec -it nginx –- sh
+   80  kubectl exec -it nginx -- sh
+   81  kubectl delete pod nginx
+   82  ls
+   83  vim sql-pod.yaml 
+   84  ls
+   85  cp nginx-pod.yaml sql-pod.yaml 
+   86  vim sql-pod.yaml 
+   87  kubectl apply -f mysql-deployment.yaml
+   88  kubectl apply -f sql-pod.yaml.yaml
+   89  kubectl apply -f sql-pod.yaml
+   90  vim sql-pod.yaml 
+   91  ls
+   92  cp nginx-pod.yaml sql-pod.yaml 
+   93  vim sql-pod.yaml 
+   94  nano sql-pod.yaml 
+   95  kubectl create -f sql-pod.yaml
+   96  kubectl exec -it mysql –- sh
+   97  kubectl exec -it mysql -- sh
+   98  kubectl exec -it sql-pod -- sh
+   99  kubectl get pods
+  100  kubectl exec -it mysql-79c846684f-4vhgv -- sh
+  101  sudo apt update
+  102  whereis kubectl
+  103  sudo apt upgrade
+  104  kubectl get svc
+  105  kubectl get nodes
+  106  history
+  107  vim frontend.yaml
+  108  vim backend.yaml
+  109  kubectl apply -f frontend.yaml
+  110  vim backend.yaml
+  111  vim frontend.yaml
+  112  kubectl apply -f frontend.yaml
+  113  vim frontend.yaml
+  114  kubectl apply -f frontend.yaml
+  115  vim frontend.yaml
+  116  kubectl apply -f frontend.yaml
+  117  vim frontend.yaml
+  118  kubectl apply -f frontend.yaml
+  119  vim frontend.yaml
+  120  kompose
+  121  whereis kompose
+  122  vim frontend.yaml
+  123  kubectl apply -f frontend.yaml
+  124  vim frontend.yaml
+  125  kubectl apply -f frontend.yaml
+  126  ls
+  127  vim backend.yaml
+  128  cat frontend.yaml 
+  129  cat backend.yaml 
+  130  kubectl apply -f backend.yaml
+  131  vim backend.yaml 
+  132  kubectl apply -f backend.yaml
+  133  kubectl get svc
+  134  10.100.91.187adb173a72e11045329a589b60724e6b6-1384263163.eu-west-2.elb.amazonaws.comadb173a72e11045329a589b60724e6b6-1384263163.eu-west-2.elb.amazonaws.com
+  135  curl adb173a72e11045329a589b60724e6b6-1384263163.eu-west-2.elb.amazonaws.com
+  136  curl adb173a72e11045329a589b60724e6b6-1384263163.eu-west-2.elb.amazonaws.com:5000
+  137  kubectl get pods
+  138  ls
+  139  vim frontend.yaml
+  140  kubectl apply -f frontend.yaml
+  141  kubectl get pods
+  142  kubectl delete -f frontend.yaml
+  143  kubectl get pods
+  144  ls
+  145  kubectl apply -f frontend.yaml
+  146  kubectl get pods
+  147  kubectl get svc
+  148  ls
+  149  vim frontend.yaml 
+  150  kubectl apply -f frontend.yaml
+  151  vim frontend.yaml 
+  152  kubectl apply -f frontend.yaml
+  153  kubectl get svc
+  154  kubectl get pods
+  155  ls
+  156  vim backend.yaml 
+  157  kubectl apply -f backend.yaml
+  158  kubectl get pods
+  159  kubectl delete -f backend.yaml
+  160  kubectl get pods
+  161  kubectl apply -f backend.yaml
+  162  kubectl get svc
+  163  kubectl get pods
+  164  ls
+  165  vim backend.yaml
+  166  cat frontend.yaml
+  167  cat backend.yaml
+  168  vim backend.yaml 
+  169  kubectl delete -f backend.yaml
+  170  kubectl apply -f backend.yaml
+  171  kubectl get pods
+  172  kubectl get svc
+  173  history
+  174  history | less
+  175  history > bash_history
