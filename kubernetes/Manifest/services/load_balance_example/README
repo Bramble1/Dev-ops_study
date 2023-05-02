@@ -1,0 +1,1 @@
+This example uses a loadbalancer in aws, with a cluster of three nodes, one master, and the other two hosting a backend and frontend yaml files, which run services and pod type resources.
