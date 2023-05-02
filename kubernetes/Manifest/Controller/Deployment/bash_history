@@ -1,0 +1,28 @@
+    1  history
+    2  ls
+    3  vim deployment-nginx.yaml
+    4  kubectl apply -f deployment-nginx.yaml
+    5  vim deployment-nginx.yaml
+    6  kubectl apply -f deployment-nginx.yaml
+    7  vim deployment-nginx.yaml
+    8  kubectl apply -f deployment-nginx.yaml
+    9  vim deployment-nginx.yaml
+   10  kubectl apply -f deployment-nginx.yaml
+   11  vim deployment-nginx.yamlku
+   12  kubectl api-resources | grep deployment
+   13  vim deployment-nginx.yaml
+   14  kubectl apply -f deployment-nginx.yaml
+   15  vim deployment-nginx.yaml
+   16  kubectl apply -f deployment-nginx.yaml
+   17  vim deployment-nginx.yaml
+   18  kubectl apply -f deployment-nginx.yaml
+   19  clear
+   20  kubectl apply -f deployment-nginx.yaml
+   21  vim deployment-nginx.yaml 
+   22  kubectl apply -f deployment-nginx.yaml
+   23  kubectl scale deployment/deployment-nginx --replicas=5
+   24  kubectl scale deployment.apps/nginx --replicas=5
+   25  kubectl set image deployment.apps/nginx nginx=nginx:latest
+   26  kubectl get pods
+   27  ls
+   28  history > bash_history 
