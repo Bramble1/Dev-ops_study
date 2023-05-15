@@ -1,0 +1,11 @@
+all:
+  hosts:
+    13.42.9.139:
+      35.178.175.187:
+  children:
+    instance_a:
+      hosts:
+        13.42.9.139:
+    instance_b:
+      hosts:
+        35.178.175.187: 

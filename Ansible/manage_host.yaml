@@ -1,0 +1,10 @@
+---
+ - hosts: demo
+   tasks:
+    - name: Example task
+      command: echo "Hello, Ansible!"
+
+ - hosts: nginx
+   tasks:
+     - name: Ping task for nginx
+       ping:

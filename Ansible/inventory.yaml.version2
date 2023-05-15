@@ -1,0 +1,15 @@
+all:
+  children:
+    demo:
+      hosts:
+        13.42.9.139
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: latest_access.pem
+    nginx:
+      hosts:
+        35.178.175.187
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: latest_access.pem
+

@@ -1,0 +1,33 @@
+---
+
+- name: install wget and unzip
+  hosts: instances
+  become: true
+  tasks:
+    - name: wget install
+      apt:
+        name: wget
+        state: present
+
+    - name: install unzip on instance A
+      apt:
+        name: unzip
+        state: present
+      when: inventory_hostname in groups['instance_a']
+
+    - name: nginx install on instance b
+      apt:
+        name: nginx
+        state: present
+      when: inventory_hostname in groups['instance_b']
+
+
+- name: Uninstall unzip from all machines apart from A
+  hosts: instances
+  become: true
+  tasks:
+    - name: unzip
+      apt:
+        name: unzip
+        state: absent
+      when: inventory_hostname != groups['instance_a']

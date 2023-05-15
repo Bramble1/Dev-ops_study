@@ -1,0 +1,17 @@
+all:
+  children:
+    instances:
+      hosts:
+        13.42.9.139     #host
+        35.178.175.187  #host_nginx
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: latest_access.pem
+
+    instance_a:
+      hosts:
+        13.42.9.139
+    instance_b:
+      hosts:
+        35.178.175.187
+    

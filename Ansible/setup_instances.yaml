@@ -1,0 +1,35 @@
+- name: install wget and unzip
+  hosts: all
+  become: true
+  tasks:
+    - name: install wget
+      apt:
+        name: wget
+        state: present
+
+    - name: install unzip on A
+      apt:
+        name: unzip
+        state: present
+      when: inventory_hostname == '13.42.9.139'
+
+- name: Install nginx and configure
+  hosts: instance_b
+  become: true
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: replacing html
+      copy:
+        src: custom.html
+        dest: /var/www/html/index.html
+      notify: Restart nginx service
+
+  handlers:
+    - name: Restart nginx service
+      service:
+        name: nginx
+        state: restarted
