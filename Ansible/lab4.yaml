@@ -1,5 +1,5 @@
 ---
-- name: load balancer edit
+- name: lab4
   hosts: localhost
   gather_facts: false
   vars:
