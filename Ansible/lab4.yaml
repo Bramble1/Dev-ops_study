@@ -1,0 +1,52 @@
+---
+- name: load balancer edit
+  hosts: localhost
+  gather_facts: false
+  vars:
+    repo_url: "https://github.com/digitalXmage/Anchor"
+    package_name: "{{ jenkins | default('unzip') }}"
+    new_file_path: "~/file"
+    text_to_append: "some text"
+  tasks:
+    - name: print name
+      debug:
+        msg: "Sam D"
+
+    - name: Clone repo
+      git:
+        repo: "{{ repo_url }}"
+        dest: "~/test"
+        version: master
+      become: true
+      become_user: root
+
+    - name: install file
+      apt:
+        name: "{{ package_name }}"
+        state: present
+      become: true
+      become_user: root
+
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+      become: true
+      become_user: root
+      notify: Restart Nginx
+
+    - name: Create a new file and append text
+      lineinfile:
+        path: "{{ new_file_path }}"
+        line: "{{ text_to_append }}" 
+        create: yes
+      become: true
+      become_user: root
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+
