@@ -12,7 +12,7 @@
       debug:
         msg: "Sam D"
 
-    - name: Clone repo
+    - name: Clone my github repo
       git:
         repo: "{{ repo_url }}"
         dest: "~/test"
@@ -20,7 +20,7 @@
       become: true
       become_user: root
 
-    - name: install file
+    - name: install jenkins
       apt:
         name: "{{ package_name }}"
         state: present
@@ -35,7 +35,7 @@
       become_user: root
       notify: Restart Nginx
 
-    - name: Create a new file and append text
+    - name: Create a file and add text
       lineinfile:
         path: "{{ new_file_path }}"
         line: "{{ text_to_append }}" 
