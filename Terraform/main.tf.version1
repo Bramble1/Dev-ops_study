@@ -1,0 +1,14 @@
+#provider resource called aws, we use the export and set the variables to our secret key and access key
+provider "aws" {
+	region="eu-west-2"
+}
+
+
+#creating a resource type aws_instance called demo1
+resource "aws_instance" "demo1"{
+	ami = "ami-09744628bed84e434"
+	instance_type = "t2.micro"
+	key_name = "access"
+	vpc_security_group_ids = ["sg-04071389c2ec769a7"]
+
+}
