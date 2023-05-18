@@ -1,9 +1,10 @@
+#Declare the provider being aws, and we provide the region variable which is in our external variable file
 provider "aws" {
 	region=var.region
 }
 
 
-#create vpc resource
+#create aws virtual private cloud called main, we tag it to use as a reference for later.
 resource "aws_vpc" "main" { 
 	cidr_block = "10.0.0.0/16" 
 	instance_tenancy = "default" 
@@ -11,7 +12,7 @@ resource "aws_vpc" "main" {
 
 }
 
-#create a subnet resource in vpc
+#create a subnet resource in our virtual private network
 resource "aws_subnet" "subnet1"{
 	vpc_id = "${aws_vpc.main.id}"
 	cidr_block="10.0.1.0/24"
@@ -23,17 +24,7 @@ resource "aws_subnet" "subnet1"{
 	}
 }
 
-#create a second subnet resource
-#resource "aws_subnet" "subnet2"{
-#	vpc_id = "${aws_vpc.main.id}"
-#	cidr_block="10.0.1.0/24"
-#	map_public_ip_on_launch="true"
-#	availability_zone = "eu-west-2a"
-
-#	tags = { Name="subnet2" }
-#}
-
-#route table and route create internet gateway to allow vpc to connect ot internet
+#creating an aws internet gateway to bind to host port and access internet, route table to route our traffic to our internet gateway we create
 resource "aws_internet_gateway" "prod-igw" {
 	vpc_id = "${aws_vpc.main.id}"
 	tags = { Name="prod-igw" }
