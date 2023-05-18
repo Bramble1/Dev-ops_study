@@ -31,7 +31,7 @@ resource "aws_route_table" "route_table" {
 	
 	route{
 		cidr_block="0.0.0.0/0" #route anywhere
-		gateway_id="${aws_internet_gateway.gateway1.id}"
+		gateway_id="{aws_internet_gateway.gateway1.id}"
 	}
 	tags = { Name="route_table" }
 }
@@ -69,20 +69,50 @@ resource "aws_security_group" "secure_group1"{
 
 
 
+#create an amazon machine image resource
+#data "aws_ami" "ubuntu" {
+#	most_recent = true
+
+	#data filtering, we're working with data sources so we're being selective
+	#with our data using the filter module
+#	filter {
+#		name="name"
+#		values=["ubuntu/images/hvm-ssd/ubuntu-focal-20.04.-amd64-server-*"]
+#	}
+#
+#	filter {
+#		name="virtualization-type"
+#		values=["hvm"]
+#	}
+#	
+#	owners=["099720109477"] 	#canonical own ubuntu
+#}
+
+#create an instance using image which we will deploy nginx on
+#resource "aws_instance" "web" {
+#	ami=data.aws_ami.ubuntu.id
+#	instance_type="t2.micro"
+#	subnet_id="${aws_subnet.subnet1.id}"
+#	tags = { Name="nginx_server" }
+#	
+#}
+
+
 #Now let's create our instance which will be running the our application(debployed by ansible and built by jenkins)
-resource "aws_instance" "instance"{
-	ami=var.aws_id
-	instance_type="t2.micro"	#hardware for our server
-	subnet_id="${aws_subnet.subnet1.id}"	#vpc
-	vpc_security_group_ids=["${aws_security_group.secure_group1.id}"]
-	key_name=var.key
-	tags = { Name="instance" }
-}
+#resource "aws_instance" "Go-developer server"{
+#	ami=var.aws_id
+#	instance_type="t2.micro"	#hardware for our server
+#	subnet_id="${aws_subnet.subnet1.id}"	#vpc
+#	vpc_security_group_ids=["${aws_security_group.secure_group1.id}"]
+#	tags = { Name="instance" }
+#}
 
 
 
-#output resource so we can see the public Ip of our aws_instance and then be able to ssh into it etc.
-output "ec2_global_ips" {
-	value = ["${aws_instance.instance.*.public_ip}"]
-}
+#We should have now setup our infrastrucure environment, should maybe mess with firewall at this point..
+#now let's setup a jenkins server on the instance to install docker file and keep up to date with the github
+#and install ansible to then launch docker container with ubuntu image with go configurations and go installed
+#onto our go-developer server, so may need to create a few more instances
+
+
 
