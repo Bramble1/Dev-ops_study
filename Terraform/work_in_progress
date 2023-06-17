@@ -1,0 +1,67 @@
+#specify the provider being aws cloud
+provider "aws" {
+    region="us-west-2"
+}
+
+#create aws virtual private cloud network
+resource "aws_vpc" "main"{
+    cidr_block="10.0.0.0/24"
+    instance_tenancy="default"
+    tags = { Name="main" }
+}
+
+#create a subnet resource in network
+resource "aws_subnet" "subnet"{
+    vpc_id=aws_vpc.main.id
+    cidr_block="10.0.0.0/25"
+    availability_zone="us-west-2"
+
+    tags = { Name="subnet" }
+}
+
+#create an s3 bucket resource for dbtable
+#backend where we store state files,in this case s3.
+#backend "s3" {
+#    bucket="terraformstate4365316d"
+#    key="state/terraform.tfstate"
+#    region="us-west-2"
+
+#}
+
+resource "aws_s3_bucket" "terraform_state" {
+  bucket = "terraformstate4365316d"
+  #key="state/terraform.tfstate"
+     
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+data "aws_iam_policy_document" "example"{
+
+
+    statement {
+            effect="Allow"
+            actions=["s3:ListBucket"]
+            resources=["arnc:aws:s3:::terraformstate4365316d"]
+        }
+    statement {
+            effect="Allow"
+            actions=["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
+            resources= ["arn:aws:s3:::terraformstate4365316d/path/to/my/key"]
+        }
+    
+
+    #statement {
+    
+     # "Effect": "Allow",
+      #"Action": [
+       # "dynamodb:DescribeTable",
+       # "dynamodb:GetItem",
+       # "dynamodb:PutItem",
+       # "dynamodb:DeleteItem"
+      #],
+       # "Resource": "arn:aws:dynamodb:*:*:table/terraform-state-lock"
+    #}
+  
+}
