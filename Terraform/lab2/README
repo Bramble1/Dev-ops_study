@@ -1,0 +1,5 @@
+In this lab step, you will be provided with access to the web-based Cloud Academy IDE. In the following lab steps, you will use the web based IDE to author Terraform templates which will be used to provision and setup an Azure Function App.
+
+
+ntroduction
+In this lab step, you will create a new Terraform template which once completed will be used to launch a load balanced static HTML5 3D Globe web application. The web app will be deployed to 2 backend VMs configured in an availability set, and which themselves sit in a backend pool behind the load balancer. The load balancer will be configured with a public IP address, enabling external HTTP traffic to flow through it.
