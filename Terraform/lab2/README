@@ -1,6 +1,10 @@
 In this lab step, you will be provided with access to the web-based Cloud Academy IDE. In the following lab steps, you will use the web based IDE to author Terraform templates which will be used to provision and setup an Azure Function App.
 
 
+# Use Terraform to Create an Azure Load Balanced Web App
+
+
+
 ntroduction
 In this lab step, you will create a new Terraform template which once completed will be used to launch a load balanced static HTML5 3D Globe web application. The web app will be deployed to 2 backend VMs configured in an availability set, and which themselves sit in a backend pool behind the load balancer. The load balancer will be configured with a public IP address, enabling external HTTP traffic to flow through it.
 
@@ -11,3 +15,15 @@ terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
+
+
+
+Checks that the Azure Load Balanced web app is correctly configured to serve HTTP content, responding with an HTTP 200 response code when a request is sent to it.
+
+Note: The following commands are used to validate the setup:
+
+curl -s -m10 -I $LB_PUBLIC_IP | grep -i "200 OK"
+
+
+
+QA: 
