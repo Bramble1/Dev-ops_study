@@ -1,0 +1,45 @@
+QA lab for terraform. 
+
+
+Check for Terraform for S3 Backend
+The Terraform configuration must use the S3 Remote State Backend. To set up the S3 and DynamoDB Table, use the following code snippet in the IDE Terminal. You will not be able to make them through the AWS Console:
+
+S3NAME="terraformstate$(date | md5sum | head -c 8)" 
+
+aws s3api create-bucket \
+    --bucket $S3NAME \
+    --region us-west-2 \
+    --create-bucket-configuration \
+    LocationConstraint=us-west-2
+
+aws s3api put-bucket-encryption \
+    --bucket $S3NAME \
+    --server-side-encryption-configuration={\"Rules\":[{\"ApplyServerSideEncryptionByDefault\":{\"SSEAlgorithm\":\"AES256\"}}]}
+
+aws s3api put-bucket-versioning --bucket $S3NAME --versioning-configuration Status=Enabled
+
+aws dynamodb create-table \
+    --table-name terraform-state-lock \
+    --attribute-definitions \
+        AttributeName=LockID,AttributeType=S \
+    --key-schema \
+        AttributeName=LockID,KeyType=HASH \
+    --region us-west-2 \
+    --provisioned-throughput \
+        ReadCapacityUnits=20,WriteCapacityUnits=20
+
+TABLE=$(aws dynamodb list-tables --region us-west-2 --query "TableNames[]" --output text)
+
+echo "Use Bucket: $S3NAME and Table: $TABLE"
+Terraform
+Check for Terraform Variables
+The Terraform configuration must make use of variables.
+
+Terraform
+Created the EC2 instance with Terraform
+The EC2 instance must adhere to the following specs:
+
+Tagged with the Name (case-sensitive) of cloudacademylabs
+Instance size must be t2.micro size
+EBS volume no bigger than 20gb
+Only deployed to us-west-2 region
