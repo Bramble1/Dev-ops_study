@@ -1,7 +1,7 @@
 In this lab step, you will be provided with access to the web-based Cloud Academy IDE. In the following lab steps, you will use the web based IDE to author Terraform templates which will be used to provision and setup an Azure Function App.
 
 
-# Use Terraform to Create an Azure Load Balanced Web App
+#Use Terraform to Create an Azure Load Balanced Web App
 
 
 
