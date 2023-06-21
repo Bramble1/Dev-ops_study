@@ -1,1 +1,24 @@
 #Reference: Taken from the QA lab, static analysis of IAC lab. It's a good example which I plan on referring back to and studying.
+
+
+Terraform fmt -check , checks for terraform configuration files recursively , meaning through subdirectories.
+
+The fmt command with the check option, returns a non-zero exit code if it finds any files that are not formatted correctly. This can be used in automation; for example, in a pre-commit hook in your source control system or in a continuous integration pipeline to ensure proper formatting.
+
+The fmt command without any options automatically modifies any configuration files to match the canonical style. This can also be useful as a pre-commit hook, if desired.
+
+terraform fmt
+
+
+terraform fmt -diff - ouptuts the changes that need to be made in order to make the files canonical.
+
+terraform validate - validate the configuration and working directory
+
+The validate command performs syntax checks, such as checking for valid structure in the file, properly spelled keywords, and valid resource references. fmt also checks for valid structure, such as matching opening and closing braces, but will not detect anything more. As the output shows, validate also performs some checks dependencies and ensures configuration variables are defined. There is a missing dependency in this case; the AWS provider plugin is not installed.
+
+
+
+terraform plan - generate an execution plan
+
+terraform init - init the working directory
+
