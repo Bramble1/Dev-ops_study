@@ -4,3 +4,33 @@ TFLint is an open-source, static analysis tool for Terraform that focuses on lin
 
 In this Lab Step, you will install and use TFLint to check the sample Terraform configuration. A Docker image is also maintained for TFLint. You will use TFLint in a container in a later Lab Step.
 
+
+
+
+TFLint is for AWS resources only
+There are slow rules and deep checks including checking for valid Amazon Machine Images (AMI)
+TFLint follows similar patterns as Terraform including the ability to use an HCL file to configure it
+If you intend to use TFLint in an automation setting, use the --error-with-issues option to return a non-zero exit code if errors are detected.
+
+
+ Attempt to run a TFLint deep check:
+
+Copy code
+tflint --deep --aws-region=us-west-2
+
+
+
+
+
+Run TFLint in normal mode:
+
+Copy code
+tflint
+
+
+
+Run the normal scan that ignores the notice rule, but add the debug option to list the rules that are in TFLint:
+
+Copy code
+tflint --error-with-issues --ignore-rule=aws_instance_not_specified_iam_profile --debug
+
