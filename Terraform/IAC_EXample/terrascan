@@ -1,2 +1,17 @@
 Terrascan is another open-source, static analysis tool for Terraform configurations. Terrascan is focused more on security best practices and only supports AWS resources. Cloud environments often have security auditing tools to check the security of active environments. Some examples are AWS Config and Microsoft Azure's Security Center. There are also third-party auditing tools that can perform a variety of security checks on your active environments such as Scout2 for AWS and G-Scout for Google Cloud. Terrascan is different in that it aims to secure your environment even before it is created. Both kinds of tools are useful and both are an essential part of a defense-in-depth security strategy.
 
+
+
+List the options for Terrascan:
+
+Copy code
+terrascan -h
+
+
+Run the Terrascan security group tests:
+
+Copy code
+terrascan --location . --tests security_group
+
+
+
