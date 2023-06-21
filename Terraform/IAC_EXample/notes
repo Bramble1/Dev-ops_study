@@ -1,0 +1,6 @@
+#Testing
+
+TFLint is an open-source, static analysis tool for Terraform that focuses on linting. It is able to detect errors that Terraform plan cannot detect. Terraform avoids making API calls during validation. This reduces the maintenance required to update checks as underlying providers change and ensures quick validation. This strategy welcomes third-party tools such as TFLint to perform more thorough checks. Even though it may take longer to run TFLint than Terraform's validate, it can take significantly longer to wait for apply to run and find an error after many resources have been deployed and may need to be deleted. TFLint can save you from the associated expenses and hassle of deploying a partial environment due to a configuration error.
+
+In this Lab Step, you will install and use TFLint to check the sample Terraform configuration. A Docker image is also maintained for TFLint. You will use TFLint in a container in a later Lab Step.
+
