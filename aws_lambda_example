@@ -1,0 +1,55 @@
+taken from QA. Create a lambda function that processes code commit events, to our repo and notifies by sending an sns email out.
+
+
+
+import boto3
+account_id = boto3.client('sts').get_caller_identity().get('Account')
+codecommit = boto3.client('codecommit')
+sns = boto3.resource('sns')
+topic_arn = "arn:aws:sns:us-west-2:%s:lab-topic" % account_id
+topic = sns.Topic(topic_arn)
+REPO_LINK = "https://console.aws.amazon.com/codecommit/home?region=%s#/repository/%s"
+def lambda_handler(event, context):
+    print("Processing %s record(s)" % len(event['Records']))
+    messages, regions = process_records(event['Records'])
+    print("Sending %s notification(s)" % len(messages))
+    send_notifications(messages, regions)
+    return True
+def process_records(records):
+    messages = {}
+    regions = {}
+    for record in records:
+        # extract record info
+        repo_name = record['eventSourceARN'].split(':')[-1]
+        regions[repo_name] = record['awsRegion']
+        if repo_name not in messages:
+            messages[repo_name] = {}
+        for ref in record['codecommit']['references']:
+            # extract commit info
+            commit_id = ref['commit']
+            branch = ref['ref'].split('/')[-1]
+            # fetch commit data
+            data = codecommit.get_commit(
+                repositoryName=repo_name,
+                commitId=commit_id,
+            )
+            message = data['commit']['message']
+            if branch not in messages[repo_name]:
+                messages[repo_name][branch] = []
+            # store (commit_id, message) tuple
+            messages[repo_name][branch].append((commit_id, message.strip()))
+    return messages, regions
+def send_notifications(messages, regions):
+    for repo_name in messages:
+        repo_url = REPO_LINK % (regions[repo_name], repo_name)
+        email_text = "%s repository has had new commits added.\n\n" % repo_name
+        email_text += "Repository URL: %s\n\n" % repo_url
+        for branch in messages[repo_name]:
+            email_text += "----------------------------------------\n"
+            email_text += "Branch %s\n\n" % branch
+            for commit_id, msg in messages[repo_name][branch]:
+                email_text += ' - %s: "%s"\n' % (commit_id, msg)
+        topic.publish(
+            Message=email_text,
+            Subject='AWS CodeCommit - %s' % repo_name,
+        )
