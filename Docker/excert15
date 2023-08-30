@@ -1,0 +1,10 @@
+#The BuildKit dockerfile:1.2 introduced the ability to specify a per-RUN filesystem mounts.
+#The mount flag allows the use of multiple mount types including: bind, cache, tempfs, secret, and ssh.
+#The general syntax is: --mount=[type=<TYPE>][,option=<value>[,option=<value>]...].
+#Bind mount points allow files and directories from the Docker context to be made available on a per-RUN basis. This can be useful for executing local scripts and binaries to produce layer changes. The bound files / directories are available to the RUN command but don't make it into the final layer.
+
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN --mount=type=bind,source=assets/greet,target=greet,rw chmod a+x ./greet && ./greet > hey.txt
+
+CMD cat hey.txt
