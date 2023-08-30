@@ -1,0 +1,16 @@
+ # syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN apk add git 
+RUN git clone https://github.com/cloudacademy/python_postgres_web_app.git 
+RUN python3 -m pip install -r /python_postgres_web_app/web_app/requirements.txt
+
+ENV FLASK_APP /python_postgres_web_app/web_app/app.py
+ENV FLASK_DEBUG true
+ENV FLASK_RUN_PORT 9000
+ENV FLASK_RUN_HOST 0.0.0.0
+
+EXPOSE 9000/tcp
+EXPOSE 9000/udp
+
+CMD ["flask", "run"]
+
