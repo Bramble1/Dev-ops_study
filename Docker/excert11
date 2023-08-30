@@ -1,0 +1,19 @@
+# syntax=docker/dockerfile:1
+#Multi stage builds to reduce size and increase performance,security etc.
+FROM python:3.10-alpine
+RUN apk add git
+WORKDIR /tmp
+RUN git clone https://github.com/cloudacademy/python_postgres_web_app.git
+
+RUN python3 -m pip install build
+RUN python3 -m build ./python_postgres_web_app/web_app
+RUN python3 -m pip install ./python_postgres_web_app/web_app/dist/cloudacademy-0.0.1-py3-none-any.whl
+RUN apk del git
+RUN rm -rf /tmp/python_postgres_web_app
+
+#This is inefficient, notice if we run docker history container_name, we see each run
+#commands creates a new image layer
+
+#Producing minimial images requires that files are removed prior to the completion of the
+#instruction, Thus it makes sense to limit the number of Run commands if that's the case
+#Which we will do in the next excert
