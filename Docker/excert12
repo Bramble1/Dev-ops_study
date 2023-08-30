@@ -1,0 +1,16 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN apk add git \
+    && cd /tmp \
+    && git clone https://github.com/cloudacademy/python_postgres_web_app.git \
+    && python3 -m pip install build \
+    && cd ./python_postgres_web_app \
+    && python3 -m build ./web_app \
+    && python3 -m pip install ./web_app/dist/cloudacademy-0.0.1-py3-none-any.whl \
+    && apk del git \
+    && rm -rf /tmp/python_postgres_web_app
+
+
+#This is more efficient, less Run commands, thus less layers of images being created ontop
+#of each other, However this comes at the cost of maintainability and readability, thus the next
+#excert will improve upon this and use "builds" to mitigate this.
