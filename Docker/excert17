@@ -1,0 +1,23 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN apk add git 
+WORKDIR /build
+RUN git clone https://github.com/cloudacademy/python_postgres_web_app.git 
+RUN python3 -m pip install build 
+RUN python3 -m build /build/python_postgres_web_app/web_app 
+RUN python3 -m venv runtime
+RUN --mount=type=cache,target=/root/.cache/ runtime/bin/python3 -m pip install \
+    --cache-dir=/root/.cache/ ./python_postgres_web_app/web_app/dist/cloudacademy-0.0.1-py3-none-any.whl 
+
+
+FROM python:3.10-alpine
+LABEL "com.cloudacademy.vendor"="CloudAcademy"
+LABEL "com.cloudacademy.image.version"="0.0.1"
+LABEL "com.cloudacademy.image.description"="Great Python app."
+
+WORKDIR /runtime
+ENV PATH=/runtime/bin:$PATH
+COPY --from=0 /build/runtime/ .
+
+
+#labels for metadata they follow the a key-pair pattern
