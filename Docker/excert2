@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+FROM alpine
+RUN apk add curl
+WORKDIR /downloads/markdown
+RUN curl -LO https://raw.githubusercontent.com/cloudacademy/python_postgres_web_app/main/readme.md
+RUN whoami > /downloads/who.dat
+RUN chmod a+w /downloads/who.dat
+USER squid
+RUN whoami >> /downloads/who.dat
