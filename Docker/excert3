@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+FROM alpine
+
+ENV FLASK_APP=app.py
+ENV FLASK_DEBUG=true
+ENV FLASK_RUN_PORT=9000
+ENV FLASK_RUN_HOST=0.0.0.0
+
+ENV ABC=123 DEF=456 ANIMAL=cat
