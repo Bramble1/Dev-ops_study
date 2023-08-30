@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN apk add git 
+WORKDIR /tmp 
+RUN git clone https://github.com/cloudacademy/python_postgres_web_app.git 
+
+RUN python3 -m pip install build 
+RUN python3 -m build ./python_postgres_web_app/web_app 
+RUN python3 -m pip install ./python_postgres_web_app/web_app/dist/cloudacademy-0.0.1-py3-none-any.whl 
+RUN apk del git 
+RUN rm -rf /tmp/python_postgres_web_app
