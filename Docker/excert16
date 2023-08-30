@@ -1,0 +1,7 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN pip install awscli
+RUN --mount=type=secret,id=aws,target=/root/.aws/credentials aws s3 cp s3://BUCKET_NAME_HERE/greet greet
+RUN chmod a+x greet
+RUN --mount=type=secret,id=aws,target=/root/.aws/credentials aws s3 ls s3://BUCKET_NAME_HERE > files.txt
+CMD ./greet
