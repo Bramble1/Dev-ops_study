@@ -1,0 +1,14 @@
+# syntax=docker/dockerfile:1
+FROM python:3.10-alpine
+RUN apk add git \
+    && cd /tmp \
+    && git clone https://github.com/cloudacademy/python_postgres_web_app.git \
+    && python3 -m pip install build \
+    && cd ./python_postgres_web_app \
+    && python3 -m build ./web_app \
+    && python3 -m pip install ./web_app/dist/cloudacademy-0.0.1-py3-none-any.whl \
+    && apk del git \
+    && rm -rf /tmp/python_postgres_web_app
+
+
+#Improved performance compared to excert7 as less images are built ontop of each other, thus smaller size
