@@ -1,0 +1,22 @@
+# syntax=docker/dockerfile:1
+FROM alpine
+
+WORKDIR /workspace
+
+COPY assets/1.txt .
+#copy assets/1.txt .
+
+ADD https://raw.githubusercontent.com/cloudacademy/lab_environment_assets/main/docker-dockerfile/assets/skill-check-2-verification.token .
+
+#WORKDIR /code
+
+#COPY assets/greet .     
+
+#RUN chmod a+x greet
+
+#COPY assets/*.txt /assets
+
+#ADD https://github.com/cloudacademy/python_postgres_web_app/archive/refs/heads/main.zip /code
+
+#ADD assets/content.tar.gz /content/
+
