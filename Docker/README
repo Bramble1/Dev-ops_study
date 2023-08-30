@@ -1,2 +1,6 @@
 In this directry you will find my revision notes about docker as well as dockerFile examples. Pls download the pdf, as viewing the pdf in github gives a weird formatting view.
  
+
+#best practices
+
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
