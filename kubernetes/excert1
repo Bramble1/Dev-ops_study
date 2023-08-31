@@ -1,0 +1,36 @@
+cat << EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-app
+spec:
+  selector:
+    matchLabels:
+      app: blue-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: blue-app
+    spec:
+      containers:
+      - name: blue-app
+        image: public.ecr.aws/cloudacademy-labs/cloudacademy/labs/k8s-ingress-app:f9a36c8
+        env:
+        - name: COLOR
+          value: '#A7C7E7'
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-app
+spec:
+  selector:
+    app: blue-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+EOF
