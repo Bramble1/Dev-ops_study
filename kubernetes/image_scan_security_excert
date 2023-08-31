@@ -1,0 +1,2 @@
+trivy image --severity HIGH,CRITICAL nginx:1.23.2-perl
+
