@@ -18,7 +18,7 @@ create_directory_structure()
 
 populate_terraform_scripts()
 {
-	cat << `EOF` > main.tf
+	cat << 'EOF' > main.tf
 	terraform {
 		required_providers {
 			aws = {
@@ -37,7 +37,9 @@ populate_terraform_scripts()
 		servername="calabvm"
 		instance_size="t2.micro"
 	}
-	EOF
+EOF
+
+	
 
 
 	
