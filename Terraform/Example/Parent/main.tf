@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 module "webserver" {
-    source = "./modules/ec2"
+    source = "./child"
     servename = "calabvm"
     instance_size = "t2.micro"
 }
