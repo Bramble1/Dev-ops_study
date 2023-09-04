@@ -83,32 +83,19 @@ else
 
 
 	if cat << 'EOF' > Modules/ec2/variables.tf
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = ">=3.7.0"
-    }
-  }
+variable "servername"{
+    description = "Name of the server"
+    type = string
 }
-data "aws_ami" "default" {
-  most_recent = "true"
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  owners = ["099720109477"]
+variable "ami" { 
+    description = "AMI ID to deploy"
+    type = string
+    default = ""
 }
-resource "aws_instance" "server" {
-    ami           = var.ami != "" ? var.ami : data.aws_ami.default.image_id
-    instance_type = var.instance_size
-    tags = {
-        Name = "calabvm"
-    }
+variable "instance_size" {
+    description = "Size of the EC2 instance"
+    type = string
+    default = "t2.micro"
 }
 EOF
 then
